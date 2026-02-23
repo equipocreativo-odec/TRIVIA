@@ -1,0 +1,88 @@
+
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Trivia ODEC</title>
+  <meta name="description" content="Juego de trivia sobre la ODEC: cultura, economía popular y participación ciudadana." />
+  <link rel="preload" href="styles.css" as="style" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="assets/svg/logo-odec.svg" type="image/svg+xml" />
+  <meta property="og:title" content="Trivia ODEC" />
+  <meta property="og:description" content="Pon a prueba tus conocimientos sobre la ODEC y su impacto cultural." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/img/583323897_854630316959594_7417263474783017644_n.jpg" />
+</head>
+<body>
+  <header class="site-header">
+    <img class="brand" src="assets/svg/logo-odec.svg" alt="Logo ODEC" />
+    <h1>Trivia ODEC</h1>
+    <p class="tagline">Cultura • Economía Popular • Participación</p>
+  </header>
+
+  <main id="app" class="app" aria-live="polite">
+    <section id="screen-home" class="screen active">
+      <div class="hero">
+        <h2>¿List@ para jugar?</h2>
+        <p>Responde preguntas sobre proyectos, eventos y misión de la ODEC. Tienes tiempo limitado por pregunta.</p>
+        <button id="btn-start" class="btn btn-primary">Comenzar</button>
+      </div>
+      <footer class="meta">
+        <small>Consejo: puedes ajustar los colores en <code>styles.css</code> (variables <code>--odec-*</code>).</small>
+      </footer>
+    </section>
+
+    <section id="screen-quiz" class="screen" aria-hidden="true">
+      <div class="hud">
+        <div class="progress">
+          <div class="bar" id="progress-bar" style="width:0%"></div>
+        </div>
+        <div class="stats">
+          <span id="stat-q">Pregunta 1/10</span>
+          <span id="stat-score">Puntaje: 0</span>
+          <span id="stat-timer" class="timer" aria-live="assertive">20s</span>
+        </div>
+      </div>
+
+      <figure class="stage">
+        <img id="bg" src="assets/img/559529476_825585593197400_3294917634817482577_n.jpg" alt="Escenario cultural" />
+        <div class="overlay"></div>
+      </figure>
+
+      <div class="card" role="group" aria-label="Opciones de respuesta">
+        <h3 id="question" class="question">Pregunta</h3>
+        <ol id="choices" class="choices"></ol>
+      </div>
+
+      <div class="controls">
+        <button id="btn-skip" class="btn btn-secondary" aria-label="Saltar pregunta (sin puntos)">Saltar</button>
+      </div>
+    </section>
+
+    <section id="screen-result" class="screen" aria-hidden="true">
+      <div class="result">
+        <h2>¡Resultado!</h2>
+        <p><strong id="result-score">0</strong> / <span id="result-total">10</span> correctas</p>
+        <p id="result-msg">¡Muy bien!</p>
+        <div class="share">
+          <button id="btn-retry" class="btn btn-primary">Jugar de nuevo</button>
+          <button id="btn-copy" class="btn btn-outline">Copiar resultado</button>
+        </div>
+      </div>
+
+      <details class="review">
+        <summary>Ver repaso de preguntas</summary>
+        <div id="review-list" class="review-list" aria-live="polite"></div>
+      </details>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small>Hecho con cariño por la comunidad. No oficial.</small>
+  </footer>
+
+  <script src="questions.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
